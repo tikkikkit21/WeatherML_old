@@ -30,11 +30,14 @@ model = LogisticRegression(solver="liblinear", multi_class="ovr")
 model.fit(x_train, y_train)
 
 # score model
-print("Train accuracy:", model.score(x_train, y_train))
-print("Test accuracy:", model.score(x_test, y_test))
+def percent(num):
+    return format(num, ".2%")
+
+print("Train accuracy:", percent(model.score(x_train, y_train)))
+print("Test accuracy:", percent(model.score(x_test, y_test)))
 print()
 
 # make predictions
 test = x_test[0].reshape(1,-1)
 print("Prediction:", model.predict(test))
-print("Confidence:", max(model.predict_proba(test)[0]))
+print("Confidence:", percent(max(model.predict_proba(test)[0])))
