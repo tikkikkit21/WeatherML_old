@@ -11,5 +11,6 @@ if __name__ == "__main__":
     humidity = int(humidity) / 100
     uv = input("What is the UV? ")
     wind = input("What is the wind speed (mph)? ")
-
+    
+    print()
     model.predict(temp, feelsLike, humidity, uv, wind)
