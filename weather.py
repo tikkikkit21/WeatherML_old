@@ -8,6 +8,7 @@ if __name__ == "__main__":
     temp = input("What is the actual temperature (°F)? ")
     feelsLike = input("What is the feels like temperature (°F)? ")
     humidity = input("What is the humidity (%)? ")
+    humidity = int(humidity) / 100
     uv = input("What is the UV? ")
     wind = input("What is the wind speed (mph)? ")
 
