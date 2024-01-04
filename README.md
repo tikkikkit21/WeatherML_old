@@ -44,7 +44,8 @@ repository for notes and exercise files from courses I've taken. Most of the ML
 courses are under the *Python* folder).
 
 I use `pandas` to import data and `scikit-learn` for dataset preparation and
-training. As of current (with v1 of the dataset), I have a training accuracy of
-73.47% and test accuracy of 81.82%. It's not terrible, but I definitely want to
-improve it (my goal is ~90% for both is possible). The model itself will need to
-be tweaked, but the biggest thing I'll need to do is collect a lot more data.
+training. The model I use is Multiclass Linear Regression. As of current (with
+v1 of the dataset), I have a training accuracy of 73.47% and test accuracy of
+81.82%. It's not terrible, but I definitely want to improve it (my goal is ~90%
+for both is possible). The model itself will need to be tweaked, but the biggest
+thing I'll need to do is collect a lot more data.
