@@ -1,8 +1,9 @@
-import model
+from model import WeatherML
 
 if __name__ == "__main__":
     print("Welcome to WeatherML!")
     print("Training model...")
+    model = WeatherML()
     model.train()
 
     temp = input("What is the actual temperature (°F)? ")
