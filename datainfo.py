@@ -3,7 +3,8 @@ import pandas as pd
 from datetime import datetime
 from model import time_to_int
 
-data = pd.read_csv("weather_data_v1.csv")
+labels = ["Date", "Temp", "FeelsLike", "Humidity", "UV", "Wind", "Label", "Rain?"]
+data = pd.read_csv("weather_data_v1.csv", names=labels, skiprows=1)
 
 def label_hist():
     x = data.iloc[:,:-1]
@@ -13,7 +14,7 @@ def label_hist():
     plot.show()
 
 def time_hist():
-    times = data["Date/Time"].apply(lambda d: time_to_int(d))
+    times = data["Date"].apply(lambda d: time_to_int(d))
 
     times.plot.hist(bins=24)
     plot.title("Time Frequency")
@@ -21,4 +22,14 @@ def time_hist():
     plot.xlabel("24hr Time (HHMM)")
     plot.show()
 
-time_hist()
+def scatter(label="Temp"):
+    data.plot.scatter(x=label, y="Label")
+    plot.show()
+
+# label_hist()
+# time_hist()
+scatter("Temp")
+scatter("FeelsLike")
+scatter("Humidity")
+scatter("UV")
+scatter("Wind")
