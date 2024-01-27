@@ -7,6 +7,11 @@ from sklearn.preprocessing import StandardScaler
 def percent(num):
     return format(num, ".2%")
 
+def time_to_int(dateString):
+    dateObj = datetime.strptime(dateString, '%m/%d/%Y %H:%M')
+    dateInt = int(dateObj.time().strftime('%H%M'))
+    return dateInt
+
 class WeatherML:
     def __init__(self):
         self.model = LogisticRegression(solver="liblinear", multi_class="ovr")
@@ -17,8 +22,7 @@ class WeatherML:
         # prepare dataset
         data = pd.read_csv("weather_data_v1.csv", names=self.labels, skiprows=1)
 
-        data["Date"] = data["Date"].apply(lambda d: datetime.strptime(d, '%m/%d/%Y %H:%M'))
-        data["Date"] = data["Date"].apply(lambda d: int(d.time().strftime('%H%M')))
+        data["Date"] = data["Date"].apply(lambda d: time_to_int(d))
         data["Humidity"] = data["Humidity"].apply(lambda h: float(h.strip('%'))/100)
         data = data.drop("Rain?", axis=1)
 
