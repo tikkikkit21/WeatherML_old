@@ -16,6 +16,9 @@ def time_freq():
     times = data["Date/Time"].apply(lambda d: time_to_int(d))
 
     times.plot.hist(bins=24)
+    plot.title("Time Frequency")
+    plot.ylabel("Count #")
+    plot.xlabel("24hr Time (HHMM)")
     plot.show()
 
 time_freq()
