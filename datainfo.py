@@ -12,7 +12,7 @@ def label_hist():
     y.value_counts().sort_index().plot.bar(x="Label", y="# Occurences")
     plot.show()
 
-def time_freq():
+def time_hist():
     times = data["Date/Time"].apply(lambda d: time_to_int(d))
 
     times.plot.hist(bins=24)
@@ -21,4 +21,4 @@ def time_freq():
     plot.xlabel("24hr Time (HHMM)")
     plot.show()
 
-time_freq()
+time_hist()
