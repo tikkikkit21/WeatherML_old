@@ -1,4 +1,4 @@
-from model import WeatherML
+from train import WeatherML
 
 if __name__ == "__main__":
     print("Welcome to WeatherML!")
