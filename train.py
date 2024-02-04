@@ -3,6 +3,7 @@ from datetime import datetime
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+import joblib
 
 def percent(num):
     return format(num, ".2%")
@@ -35,6 +36,10 @@ x_test = scaler.transform(x_test)
 
 # train
 model.fit(x_train, y_train)
+
+# store results
+joblib.dump(model, "test.joblib")
+newModel: LogisticRegression = joblib.load("test.joblib")
 
 # score model
 print("Train accuracy:", percent(model.score(x_train, y_train)))
