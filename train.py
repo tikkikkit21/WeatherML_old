@@ -4,6 +4,9 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import joblib
+import os
+
+RESULTS_DIR = "results"
 
 def percent(num):
     return format(num, ".2%")
@@ -38,9 +41,13 @@ if __name__ == "__main__":
     # train
     model.fit(x_train, y_train)
 
-    # store results
-    joblib.dump(model, "test.joblib")
-    joblib.dump(scaler, "scaler.joblib")
+    # store 
+    if not os.path.exists(RESULTS_DIR):
+        os.makedirs(RESULTS_DIR)
+
+    timestamp = f"{datetime.now().date()}_{datetime.now().time().strftime('%M%H%S')}"
+    joblib.dump(model, f"results/model.{timestamp}")
+    joblib.dump(scaler, f"results/scaler.{timestamp}")
 
     # score model
     print("Train accuracy:", percent(model.score(x_train, y_train)))
