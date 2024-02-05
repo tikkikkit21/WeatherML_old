@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plot
 import pandas as pd
 from datetime import datetime
-from model import time_to_int
+from train import time_to_int
 
 labels = ["Date", "Temp", "FeelsLike", "Humidity", "UV", "Wind", "Label", "Rain?"]
 data = pd.read_csv("weather_data_v1.csv", names=labels, skiprows=1)
@@ -25,13 +25,13 @@ def time_hist():
     plot.show()
 
 def scatter(label="Temp"):
-    data.plot.scatter(x=label, y="Label")
+    data.plot.scatter(x="Date", y=label, c="Label")
     plot.show()
 
 # label_hist()
 # time_hist()
 scatter("Temp")
-scatter("FeelsLike")
-scatter("Humidity")
-scatter("UV")
-scatter("Wind")
+# scatter("FeelsLike")
+# scatter("Humidity")
+# scatter("UV")
+# scatter("Wind")

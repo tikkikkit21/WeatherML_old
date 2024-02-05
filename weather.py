@@ -1,10 +1,28 @@
-from train import WeatherML
+import pandas as pd
+from datetime import datetime
+from train import percent
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
+import joblib
+
+model: LogisticRegression = joblib.load("test.joblib")
+scaler: StandardScaler = joblib.load("scaler.joblib")
+
+def predict(*args):
+    labels = ["Date", "Temp", "FeelsLike", "Humidity", "UV", "Wind", "Label", "Rain?"]
+
+    now = datetime.now().time().strftime('%H%M')
+    args = [int(now)] + list(args)
+
+    df = pd.DataFrame([args], columns=labels[:6])
+    sample = scaler.transform(df)
+    
+    print("Prediction:", model.predict(sample))
+    print("Confidence:", percent(max(model.predict_proba(sample)[0])))
+
 
 if __name__ == "__main__":
     print("Welcome to WeatherML!")
-    print("Training model...")
-    model = WeatherML()
-    model.train()
 
     temp = input("What is the actual temperature (°F)? ")
     feelsLike = input("What is the feels like temperature (°F)? ")
@@ -14,4 +32,4 @@ if __name__ == "__main__":
     wind = input("What is the wind speed (mph)? ")
     
     print()
-    model.predict(temp, feelsLike, humidity, uv, wind)
+    predict(temp, feelsLike, humidity, uv, wind)
