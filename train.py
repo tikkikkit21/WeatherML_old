@@ -47,8 +47,8 @@ if __name__ == '__main__':
         os.makedirs(RESULTS_DIR)
 
     timestamp = f'{datetime.now().date()}_{datetime.now().time().strftime("%M%H%S")}'
-    joblib.dump(model, f'results/model.{timestamp}')
-    joblib.dump(scaler, f'results/scaler.{timestamp}')
+    joblib.dump(model, f'results/{timestamp}.model')
+    joblib.dump(scaler, f'results/{timestamp}.scaler')
 
     # score model
     print('Train accuracy:', percent(model.score(x_train, y_train)))
