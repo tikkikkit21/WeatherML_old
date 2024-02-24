@@ -12,7 +12,6 @@ def init_data():
     data = pd.read_csv("weather_data_v1.csv", names=labels, skiprows=1)
     data["Date"] = data["Date"].apply(lambda d: time_to_int(d))
     data["Humidity"] = data["Humidity"].apply(lambda h: float(h.strip('%'))/100)
-    data["index"] = data.index
 
 def label_hist():
     x = data.iloc[:,:-1]
@@ -30,8 +29,13 @@ def time_hist():
     plt.xlabel("24hr Time (HHMM)")
     plt.show()
 
-def scatter(label="Temp"):
-    data.plot.scatter(x="index", y=label, c="Label")
+def scatter(feature="Temp"):
+    plt.scatter(
+        x=data.index,
+        y=data[feature],
+        c=data['Label'].astype('category').cat.codes,
+        cmap='viridis'
+    )
     plt.show()
 
 if __name__ == "__main__":
