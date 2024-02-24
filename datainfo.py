@@ -1,5 +1,6 @@
-import matplotlib.pyplot as plt
 import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
 from datetime import datetime
 from train import time_to_int
 
@@ -30,11 +31,13 @@ def time_hist():
     plt.show()
 
 def scatter(feature="Temp"):
+    colors = ['blue', 'green', 'yellow', 'red']
+    clothes_cm = ListedColormap(colors)
     plt.scatter(
         x=data.index,
         y=data[feature],
         c=data['Label'].astype('category').cat.codes,
-        cmap='viridis'
+        cmap=clothes_cm
     )
     plt.show()
 
