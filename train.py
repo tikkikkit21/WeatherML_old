@@ -7,6 +7,7 @@ import joblib
 import os
 
 RESULTS_DIR = 'results'
+DATA_CSV = 'data/weather_data_v1.csv'
 
 def percent(num):
     return format(num, '.2%')
@@ -22,7 +23,7 @@ if __name__ == '__main__':
     scaler = StandardScaler()
 
     # prepare dataset
-    data = pd.read_csv('weather_data_v1.csv', names=labels, skiprows=1)
+    data = pd.read_csv(DATA_CSV, names=labels, skiprows=1)
     data['Date'] = data['Date'].apply(lambda d: time_to_int(d))
     data['Humidity'] = data['Humidity'].apply(lambda h: float(h.strip('%'))/100)
     data = data.drop('Rain?', axis=1)
