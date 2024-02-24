@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plot
+import matplotlib.pyplot as plt
 import pandas as pd
 from datetime import datetime
 from train import time_to_int
@@ -14,20 +14,20 @@ def label_hist():
     y = data['Outer Clothing']
 
     y.value_counts().sort_index().plot.bar(x="Label", y="# Occurences")
-    plot.show()
+    plt.show()
 
 def time_hist():
     times = data["Date"].apply(lambda d: time_to_int(d))
 
     times.plot.hist(bins=24)
-    plot.title("Time Frequency")
-    plot.ylabel("Count #")
-    plot.xlabel("24hr Time (HHMM)")
-    plot.show()
+    plt.title("Time Frequency")
+    plt.ylabel("Count #")
+    plt.xlabel("24hr Time (HHMM)")
+    plt.show()
 
 def scatter(label="Temp"):
     data.plot.scatter(x="index", y=label, c="Label")
-    plot.show()
+    plt.show()
 
 # label_hist()
 # time_hist()
