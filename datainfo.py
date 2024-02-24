@@ -33,12 +33,15 @@ def time_hist():
 def scatter(feature='Temp'):
     colors = ['blue', 'green', 'yellow', 'red']
     clothes_cm = ListedColormap(colors)
-    plt.scatter(
+    
+    graph = plt.scatter(
         x=data.index,
         y=data[feature],
         c=data['Label'].astype('category').cat.codes,
         cmap=clothes_cm
     )
+
+    plt.title(feature)
     plt.show()
 
 if __name__ == '__main__':
