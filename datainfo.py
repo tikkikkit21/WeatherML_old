@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 from datetime import datetime
@@ -35,12 +36,16 @@ def scatter(feature='Temp'):
     colors = ['blue', 'green', 'yellow', 'red']
     clothes_cm = ListedColormap(colors)
     
-    graph = plt.scatter(
+    plt.scatter(
         x=data.index,
         y=data[feature],
         c=data['Label'].astype('category').cat.codes,
         cmap=clothes_cm
     )
+
+    legend_labels = ['coat', 'jacket-long', 'jacket-short', 'none']
+    legend_handles = [plt.Line2D([0], [0], marker='o', color='w', markerfacecolor=colors[i], markersize=10) for i in range(4)]
+    plt.legend(legend_handles, legend_labels, title='Categories')
 
     plt.title(feature)
     plt.show()
