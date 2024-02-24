@@ -6,6 +6,8 @@ from train import time_to_int
 data = None
 
 def init_data():
+    global data
+    
     labels = ["Date", "Temp", "FeelsLike", "Humidity", "UV", "Wind", "Label", "Rain?"]
     data = pd.read_csv("weather_data_v1.csv", names=labels, skiprows=1)
     data["Date"] = data["Date"].apply(lambda d: time_to_int(d))
