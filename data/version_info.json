@@ -1,0 +1,8 @@
+{
+    "weather_data_v1": {
+        "date": "01/27/2024",
+        "columns": ["Date/Time","Temp (°F)","Feels Like (°F)","Humidity (%)","UV","Wind (mph)","Outer Clothing","Rain?"],
+        "ignore": ["Rain?"],
+        "labels": ["Date/Time","temp","feels_like","humidity","uv","wind","label"]
+    }
+}
