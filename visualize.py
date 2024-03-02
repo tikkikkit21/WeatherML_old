@@ -1,3 +1,4 @@
+import sys
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -5,7 +6,18 @@ from matplotlib.colors import ListedColormap
 from datetime import datetime
 from train import time_to_int
 
-DATA_CSV = 'data/weather_data_v1.csv'
+# check for provided version in cline args
+VERSION = 1
+if len(sys.argv) == 1:
+    pass # TODO: get latest from json
+else:
+    arg = sys.argv[1]
+    if arg == '-h':
+        print("Usage: visualize.py [version]")
+        exit()
+    VERSION = arg  
+DATA_CSV = f'data/weather_data_v{VERSION}'
+
 data = None
 
 def init_data():
