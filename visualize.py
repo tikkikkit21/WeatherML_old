@@ -1,10 +1,11 @@
 import sys
 import json
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
-from datetime import datetime
+
 from train import time_to_int
 
 # check for provided version in cline args

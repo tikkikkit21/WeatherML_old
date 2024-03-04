@@ -1,10 +1,12 @@
-import pandas as pd
+import os
 from datetime import datetime
+
+import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import joblib
-import os
+
 
 RESULTS_DIR = 'results'
 DATA_CSV = 'data/weather_data_v1.csv'
