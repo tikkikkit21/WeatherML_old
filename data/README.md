@@ -13,4 +13,4 @@ Google sheets: https://docs.google.com/spreadsheets/d/1wjoOM3OyRlOUdET7_jU2uoCyO
     - Add metadata for different dataset versions
     - Programs can dynamically adjust based on provided version
 - Added `Gust` data
-    - Note: missing data before 01/19/2024
+- Not ideal for training due to missing gust data
