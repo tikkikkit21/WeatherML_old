@@ -47,6 +47,9 @@ def init_data():
 
 def label_hist(axis):
     output = data[config['output']].value_counts().sort_index()
+    axis.set_title("Label Distribution")
+    axis.set_xlabel("Clothing Type")
+    axis.set_ylabel("Frequency")
     output.plot.bar(
         x='Label',
         y='# Occurences',
@@ -54,6 +57,8 @@ def label_hist(axis):
     )
 
 def time_hist(axis):
+    axis.set_title("Time Distribution")
+    axis.set_xlabel("Time")
     data['time'].plot.hist(bins=24, ax=axis)
 
 def scatter(feature='temp'):
@@ -82,8 +87,8 @@ if __name__ == '__main__':
         figsize=(12,6)
     )
 
-    time_hist(ax2)
     label_hist(ax1)
+    time_hist(ax2)
     plt.show()
     # scatter('temp')
     # scatter('feels_like')
