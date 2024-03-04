@@ -53,7 +53,8 @@ def label_hist(axis):
     output.plot.bar(
         x='Label',
         y='# Occurences',
-        ax=axis
+        ax=axis,
+        color=list(COLORS.values())
     )
 
 def time_hist(axis):
