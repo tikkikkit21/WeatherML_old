@@ -5,7 +5,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 import joblib
 
-from train import percent
+from util import percent
 
 model: LogisticRegression = joblib.load('results/2024-02-24_561133.model')
 scaler: StandardScaler = joblib.load('results/2024-02-24_561133.scaler')

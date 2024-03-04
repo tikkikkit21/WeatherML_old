@@ -7,17 +7,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import joblib
 
+from util import time_to_int, percent
 
 RESULTS_DIR = 'results'
 DATA_CSV = 'data/weather_data_v1.csv'
-
-def percent(num):
-    return format(num, '.2%')
-
-def time_to_int(timeString):
-    timeObj = datetime.strptime(timeString, '%H:%M').time()
-    timeInt = timeObj.hour * 60 + timeObj.minute
-    return timeInt
 
 if __name__ == '__main__':
     model = LogisticRegression(solver='liblinear', multi_class='ovr')
