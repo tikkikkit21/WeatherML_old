@@ -1,4 +1,6 @@
 import os
+import sys
+import json
 from datetime import datetime
 
 import pandas as pd
@@ -9,8 +11,30 @@ import joblib
 
 from util import time_to_int, percent
 
+# check for provided version in cline args
+with open('data/version_info.json', 'r') as file:
+    config = json.load(file)
+
+if len(sys.argv) == 1:
+    VERSION=list(config.keys())[-1]
+else:
+    arg = sys.argv[1]
+    if arg == '-h':
+        print('Usage: train.py [version number]')
+        exit()
+    elif not arg.isdigit():
+        print('Version needs to be a number!')
+
+    VERSION = f'v{arg}'
+
+try:
+    config = config[VERSION]
+except KeyError:
+    print(f'Dataset {VERSION} does not exist')
+    exit()
+
 RESULTS_DIR = 'results'
-DATA_CSV = 'data/weather_data_v1.csv'
+DATA_CSV = f'data/weather_data_{VERSION}.csv'
 
 if __name__ == '__main__':
     model = LogisticRegression(solver='liblinear', multi_class='ovr')
