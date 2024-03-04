@@ -35,23 +35,19 @@ def init_data():
     global data
     
     data = pd.read_csv(DATA_CSV, names=config['labels'], skiprows=1)
-    data.drop(config['drop'], axis='columns', inplace=True)
     data['time'] = data['time'].apply(lambda d: time_to_int(d))
     data['humidity'] = data['humidity'].apply(lambda h: float(h.strip('%'))/100)
 
-def label_hist():
-    x = data.iloc[:,:-1]
-    y = data[config['output']]
+def label_hist(axis):
+    output = data[config['output']].value_counts().sort_index()
+    output.plot.bar(
+        x='Label',
+        y='# Occurences',
+        ax=axis
+    )
 
-    y.value_counts().sort_index().plot.bar(x='Label', y='# Occurences')
-    plt.show()
-
-def time_hist():
-    data['time'].plot.hist(bins=24)
-    plt.title('Time Frequency')
-    plt.ylabel('Count #')
-    plt.xlabel('24hr Time (HHMM)')
-    plt.show()
+def time_hist(axis):
+    data['time'].plot.hist(bins=24, ax=axis)
 
 def scatter(feature='temp'):
     colors = ['blue', 'green', 'yellow', 'red']
@@ -73,10 +69,18 @@ def scatter(feature='temp'):
 
 if __name__ == '__main__':
     init_data()
-    label_hist()
-    time_hist()
-    scatter('temp')
-    scatter('feels_like')
-    scatter('humidity')
-    scatter('uv')
-    scatter('wind')
+
+    fig, (ax1, ax2) = plt.subplots(
+        nrows=1,
+        ncols=2,
+        figsize=(12,6)
+    )
+
+    time_hist(ax2)
+    label_hist(ax1)
+    plt.show()
+    # scatter('temp')
+    # scatter('feels_like')
+    # scatter('humidity')
+    # scatter('uv')
+    # scatter('wind')
