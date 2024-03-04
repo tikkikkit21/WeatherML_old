@@ -8,21 +8,24 @@ from datetime import datetime
 from train import time_to_int
 
 # check for provided version in cline args
-VERSION = 1
+with open('data/version_info.json', 'r') as file:
+    config = json.load(file)
+
 if len(sys.argv) == 1:
-    pass # TODO: get latest from json
+    VERSION=list(config.keys())[-1]
 else:
     arg = sys.argv[1]
     if arg == '-h':
-        print("Usage: visualize.py [version]")
+        print('Usage: visualize.py [version number]')
         exit()
-    VERSION = arg  
-DATA_CSV = f'data/weather_data_v{VERSION}.csv'
+    elif not arg.isdigit():
+        print('Version needs to be a number!')
 
+    VERSION = f'v{arg}'
+
+config = config[VERSION]
+DATA_CSV = f'data/weather_data_{VERSION}.csv'
 data = None
-
-with open('data/version_info.json', 'r') as file:
-    config = json.load(file)[f'v{VERSION}']
 
 def init_data():
     global data
