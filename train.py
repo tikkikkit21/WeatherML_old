@@ -12,10 +12,10 @@ DATA_CSV = 'data/weather_data_v1.csv'
 def percent(num):
     return format(num, '.2%')
 
-def time_to_int(dateString):
-    dateObj = datetime.strptime(dateString, '%m/%d/%Y %H:%M')
-    dateInt = int(dateObj.time().strftime('%H%M'))
-    return dateInt
+def time_to_int(timeString):
+    timeObj = datetime.strptime(timeString, '%H:%M').time()
+    timeInt = timeObj.hour * 60 + timeObj.minute
+    return timeInt
 
 if __name__ == '__main__':
     model = LogisticRegression(solver='liblinear', multi_class='ovr')
