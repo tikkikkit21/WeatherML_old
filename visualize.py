@@ -1,4 +1,5 @@
 import sys
+import json
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -20,38 +21,39 @@ DATA_CSV = f'data/weather_data_v{VERSION}.csv'
 
 data = None
 
+with open('data/version_info.json', 'r') as file:
+    config = json.load(file)[f'v{VERSION}']
+
 def init_data():
     global data
     
-    labels = ['Date', 'Temp', 'FeelsLike', 'Humidity', 'UV', 'Wind', 'Label', 'Rain?']
-    data = pd.read_csv(DATA_CSV, names=labels, skiprows=1)
-    data['Date'] = data['Date'].apply(lambda d: time_to_int(d))
-    data['Humidity'] = data['Humidity'].apply(lambda h: float(h.strip('%'))/100)
+    data = pd.read_csv(DATA_CSV, names=config['labels'], skiprows=1)
+    data.drop(config['drop'], axis='columns', inplace=True)
+    data['time'] = data['time'].apply(lambda d: time_to_int(d))
+    data['humidity'] = data['humidity'].apply(lambda h: float(h.strip('%'))/100)
 
 def label_hist():
     x = data.iloc[:,:-1]
-    y = data['Outer Clothing']
+    y = data[config['output']]
 
     y.value_counts().sort_index().plot.bar(x='Label', y='# Occurences')
     plt.show()
 
 def time_hist():
-    times = data['Date'].apply(lambda d: time_to_int(d))
-
-    times.plot.hist(bins=24)
+    data['time'].plot.hist(bins=24)
     plt.title('Time Frequency')
     plt.ylabel('Count #')
     plt.xlabel('24hr Time (HHMM)')
     plt.show()
 
-def scatter(feature='Temp'):
+def scatter(feature='temp'):
     colors = ['blue', 'green', 'yellow', 'red']
     clothes_cm = ListedColormap(colors)
     
     plt.scatter(
         x=data.index,
         y=data[feature],
-        c=data['Label'].astype('category').cat.codes,
+        c=data[config['output']].astype('category').cat.codes,
         cmap=clothes_cm
     )
 
@@ -66,8 +68,8 @@ if __name__ == '__main__':
     init_data()
     label_hist()
     time_hist()
-    scatter('Temp')
-    scatter('FeelsLike')
-    scatter('Humidity')
-    scatter('UV')
-    scatter('Wind')
+    scatter('temp')
+    scatter('feels_like')
+    scatter('humidity')
+    scatter('uv')
+    scatter('wind')
