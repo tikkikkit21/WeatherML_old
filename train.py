@@ -40,13 +40,13 @@ if __name__ == '__main__':
 
     # prepare dataset
     data = pd.read_csv(DATA_CSV, names=config['labels'], skiprows=1)
-    data['Date'] = data['Date'].apply(lambda d: time_to_int(d))
-    data['Humidity'] = data['Humidity'].apply(lambda h: float(h.strip('%'))/100)
-    data = data.drop('Rain?', axis=1)
+    data['time'] = data['time'].apply(lambda d: time_to_int(d))
+    data['humidity'] = data['humidity'].apply(lambda h: float(h.strip('%'))/100)
 
     # split into test/train
-    x = data[data.columns.tolist()[:-1]]
-    y = data['Label']
+    train = data.drop(columns=config['ignore'])
+    x = train[train.drop(columns=config['output']).columns.tolist()]
+    y = train[config['output']]
 
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.1, random_state=1)    
 

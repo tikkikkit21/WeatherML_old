@@ -2,13 +2,13 @@
     "v1": {
         "date": "01/27/2024",
         "labels": ["date","time","temp","feels_like","humidity","uv","wind","outer_clothing", "rain"],
-        "drop": ["rain"],
+        "ignore": ["rain", "date"],
         "output": "outer_clothing"
     },
     "v2": {
         "date": "02/24/2024",
         "labels": ["date","time","temp","feels_like","humidity","uv","wind","gusts","outer_clothing", "rain"],
-        "drop": ["rain"],
+        "ignore": ["rain", "date"],
         "output": "outer_clothing"
     }
 }
