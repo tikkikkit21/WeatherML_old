@@ -5,8 +5,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 import joblib
 
-model: LogisticRegression = joblib.load('test.joblib')
-scaler: StandardScaler = joblib.load('scaler.joblib')
+model: LogisticRegression = joblib.load('results/2024-02-24_561133.model')
+scaler: StandardScaler = joblib.load('results/2024-02-24_561133.scaler')
 
 def predict(*args):
     labels = ['Date', 'Temp', 'FeelsLike', 'Humidity', 'UV', 'Wind', 'Label', 'Rain?']

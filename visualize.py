@@ -16,7 +16,7 @@ else:
         print("Usage: visualize.py [version]")
         exit()
     VERSION = arg  
-DATA_CSV = f'data/weather_data_v{VERSION}'
+DATA_CSV = f'data/weather_data_v{VERSION}.csv'
 
 data = None
 
@@ -64,10 +64,10 @@ def scatter(feature='Temp'):
 
 if __name__ == '__main__':
     init_data()
-    # label_hist()
-    # time_hist()
+    label_hist()
+    time_hist()
     scatter('Temp')
-    # scatter('FeelsLike')
-    # scatter('Humidity')
-    # scatter('UV')
-    # scatter('Wind')
+    scatter('FeelsLike')
+    scatter('Humidity')
+    scatter('UV')
+    scatter('Wind')
