@@ -23,7 +23,12 @@ else:
 
     VERSION = f'v{arg}'
 
-config = config[VERSION]
+try:
+    config = config[VERSION]
+except KeyError:
+    print(f'Dataset {VERSION} does not exist')
+    exit()
+
 DATA_CSV = f'data/weather_data_{VERSION}.csv'
 data = None
 
