@@ -85,7 +85,7 @@ if __name__ == '__main__':
     fig, (ax1, ax2) = plt.subplots(
         nrows=1,
         ncols=2,
-        figsize=(12,6)
+        figsize=(10,6)
     )
 
     label_hist(ax1)
