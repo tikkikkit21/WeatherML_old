@@ -6,6 +6,13 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 from util import time_to_int
 
+COLORS = {
+    'coat': '#4A86E8',
+    'jacket-long': '#00FF00',
+    'jacket-short': '#FFFF00',
+    'none': '#FF0000'
+}
+
 # check for provided version in cline args
 with open('data/version_info.json', 'r') as file:
     config = json.load(file)
@@ -50,8 +57,7 @@ def time_hist(axis):
     data['time'].plot.hist(bins=24, ax=axis)
 
 def scatter(feature='temp'):
-    colors = ['blue', 'green', 'yellow', 'red']
-    clothes_cm = ListedColormap(colors)
+    clothes_cm = ListedColormap(COLORS.values())
     
     plt.scatter(
         x=data.index,
@@ -61,7 +67,7 @@ def scatter(feature='temp'):
     )
 
     legend_labels = ['coat', 'jacket-long', 'jacket-short', 'none']
-    legend_handles = [plt.Line2D([0], [0], marker='o', color='w', markerfacecolor=colors[i], markersize=10) for i in range(4)]
+    legend_handles = [plt.Line2D([0], [0], marker='o', color='w', markerfacecolor=list(COLORS.values())[i], markersize=10) for i in range(4)]
     plt.legend(legend_handles, legend_labels, title='Categories')
 
     plt.title(feature)
