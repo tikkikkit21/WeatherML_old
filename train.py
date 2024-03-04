@@ -2,13 +2,11 @@ import os
 import sys
 import json
 from datetime import datetime
-
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import joblib
-
 from util import time_to_int, percent
 
 # check for provided version in cline args
@@ -38,11 +36,10 @@ DATA_CSV = f'data/weather_data_{VERSION}.csv'
 
 if __name__ == '__main__':
     model = LogisticRegression(solver='liblinear', multi_class='ovr')
-    labels = ['Date', 'Temp', 'FeelsLike', 'Humidity', 'UV', 'Wind', 'Label', 'Rain?']
     scaler = StandardScaler()
 
     # prepare dataset
-    data = pd.read_csv(DATA_CSV, names=labels, skiprows=1)
+    data = pd.read_csv(DATA_CSV, names=config['labels'], skiprows=1)
     data['Date'] = data['Date'].apply(lambda d: time_to_int(d))
     data['Humidity'] = data['Humidity'].apply(lambda h: float(h.strip('%'))/100)
     data = data.drop('Rain?', axis=1)
