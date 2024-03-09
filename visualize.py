@@ -57,6 +57,7 @@ def label_hist(axis: matplotlib.axes.Axes):
     axis.set_title('Label Distribution')
     axis.set_xlabel('Clothing Type')
     axis.set_ylabel('# Records')
+    axis.tick_params(axis='x', labelrotation=0)
 
 def time_hist(axis: matplotlib.axes.Axes):
     data['time'].plot.hist(bins=24, ax=axis)
