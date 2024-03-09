@@ -65,10 +65,10 @@ def time_hist(axis: matplotlib.axes.Axes):
     axis.set_xlabel('Time')
     axis.set_ylabel('# Records')
 
-def scatter(feature='temp'):
+def scatter(axis: matplotlib.axes.Axes, feature='temp'):
     clothes_cm = ListedColormap(COLORS.values())
     
-    plt.scatter(
+    axis.scatter(
         x=data.index,
         y=data[feature],
         c=data[config['output']].astype('category').cat.codes,
@@ -77,10 +77,8 @@ def scatter(feature='temp'):
 
     legend_labels = ['coat', 'jacket-long', 'jacket-short', 'none']
     legend_handles = [plt.Line2D([0], [0], marker='o', color='w', markerfacecolor=list(COLORS.values())[i], markersize=10) for i in range(4)]
-    plt.legend(legend_handles, legend_labels, title='Categories')
-
-    plt.title(feature)
-    plt.show()
+    axis.legend(legend_handles, legend_labels, title='Categories')
+    axis.set_title(feature)
 
 def plot_histograms():
     fig, (ax1, ax2) = plt.subplots(
@@ -93,11 +91,21 @@ def plot_histograms():
     time_hist(ax2)
     plt.show()
 
+def plot_scatters():
+    fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(
+        nrows=2,
+        ncols=2,
+        figsize=(8,8)
+    )
+
+    scatter(ax1, 'temp')
+    scatter(ax2, 'humidity')
+    scatter(ax3, 'uv')
+    scatter(ax4, 'wind')
+
+    plt.show()
+
 if __name__ == '__main__':
     init_data()
     plot_histograms()
-    # scatter('temp')
-    # scatter('feels_like')
-    # scatter('humidity')
-    # scatter('uv')
-    # scatter('wind')
+    plot_scatters()
