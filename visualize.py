@@ -48,18 +48,21 @@ def init_data():
 
 def label_hist(axis: matplotlib.axes.Axes):
     output = data[config['output']].value_counts().sort_index()
-    axis.set_title("Label Distribution")
-    axis.set_xlabel("Clothing Type")
-    axis.set_ylabel("Frequency")
     output.plot.bar(
         x='Label',
         y='# Occurences',
         ax=axis,
         color=list(COLORS.values())
     )
+    axis.set_title('Label Distribution')
+    axis.set_xlabel('Clothing Type')
+    axis.set_ylabel('# Records')
 
 def time_hist(axis: matplotlib.axes.Axes):
     data['time'].plot.hist(bins=24, ax=axis)
+    axis.set_title('Time Distribution')
+    axis.set_xlabel('Time')
+    axis.set_ylabel('# Records')
 
 def scatter(feature='temp'):
     clothes_cm = ListedColormap(COLORS.values())
