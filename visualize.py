@@ -3,6 +3,7 @@ import json
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.axes
 from matplotlib.colors import ListedColormap
 from util import time_to_int
 
@@ -45,7 +46,7 @@ def init_data():
     data['time'] = data['time'].apply(lambda d: time_to_int(d))
     data['humidity'] = data['humidity'].apply(lambda h: float(h.strip('%'))/100)
 
-def label_hist(axis):
+def label_hist(axis: matplotlib.axes.Axes):
     output = data[config['output']].value_counts().sort_index()
     axis.set_title("Label Distribution")
     axis.set_xlabel("Clothing Type")
@@ -57,9 +58,7 @@ def label_hist(axis):
         color=list(COLORS.values())
     )
 
-def time_hist(axis):
-    axis.set_title("Time Distribution")
-    axis.set_xlabel("Time")
+def time_hist(axis: matplotlib.axes.Axes):
     data['time'].plot.hist(bins=24, ax=axis)
 
 def scatter(feature='temp'):
