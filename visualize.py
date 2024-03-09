@@ -82,9 +82,7 @@ def scatter(feature='temp'):
     plt.title(feature)
     plt.show()
 
-if __name__ == '__main__':
-    init_data()
-
+def plot_histograms():
     fig, (ax1, ax2) = plt.subplots(
         nrows=1,
         ncols=2,
@@ -94,6 +92,10 @@ if __name__ == '__main__':
     label_hist(ax1)
     time_hist(ax2)
     plt.show()
+
+if __name__ == '__main__':
+    init_data()
+    plot_histograms()
     # scatter('temp')
     # scatter('feels_like')
     # scatter('humidity')
