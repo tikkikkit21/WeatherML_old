@@ -12,5 +12,6 @@ Google sheets: https://docs.google.com/spreadsheets/d/1wjoOM3OyRlOUdET7_jU2uoCyO
 - Development purposes
     - Add metadata for different dataset versions
     - Programs can dynamically adjust based on provided version
-- Added `Gust` data
-- Not ideal for training due to missing gust data
+- Added `Gusts` data
+    - Missing values
+    - Train without gust data for now
