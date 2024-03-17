@@ -1,13 +1,20 @@
 # Dataset Log
 Google sheets: https://docs.google.com/spreadsheets/d/1wjoOM3OyRlOUdET7_jU2uoCyOraQOWY8XGOw8LVWK3A
 
-## Version 1 (01/27/2024)
+## Training Results
+| Version | Train Acc. | Test Acc. |
+| ------- | ---------- | --------- |
+| v1      | 73.47%     | 81.82%    |
+| v2      | 79.14%     | 73.68%    |
+
+## Dataset Notes
+### Version 1 (01/27/2024)
 - 109 entries
 - Development purposes
     - Test out training model
     - Generate some initial visualizations
 
-## Version 2 (02/24/2024)
+### Version 2 (02/24/2024)
 - 182 entries
 - Development purposes
     - Add metadata for different dataset versions
