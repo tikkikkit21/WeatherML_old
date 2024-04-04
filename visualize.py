@@ -15,7 +15,7 @@ COLORS = {
 }
 
 # check for provided version in cline args
-with open('data/version_info.json', 'r') as file:
+with open('data/experiment_config.json', 'r') as file:
     config = json.load(file)
 
 if len(sys.argv) == 1:
@@ -23,20 +23,20 @@ if len(sys.argv) == 1:
 else:
     arg = sys.argv[1]
     if arg == '-h':
-        print('Usage: visualize.py [version number]')
+        print('Usage: visualize.py [version number]\nEx: visualize.py 2')
         exit()
     elif not arg.isdigit():
         print('Version needs to be a number!')
-
-    VERSION = f'v{arg}'
+        exit()
+    VERSION = f'exp{arg}'
 
 try:
     config = config[VERSION]
 except KeyError:
-    print(f'Dataset {VERSION} does not exist')
+    print(f'Experiment \'{VERSION}\' does not exist')
     exit()
 
-DATA_CSV = f'data/weather_data_{VERSION}.csv'
+DATA_CSV = f'data/{config["dataset"]}'
 data = None
 
 def init_data():
