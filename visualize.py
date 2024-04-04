@@ -89,6 +89,8 @@ def plot_histograms():
 
     label_hist(ax1)
     time_hist(ax2)
+
+    plt.savefig('visualizations/histograms.png')
     plt.show()
 
 def plot_scatters():
@@ -103,6 +105,7 @@ def plot_scatters():
     scatter(ax3, 'uv')
     scatter(ax4, 'wind')
 
+    plt.savefig('visualizations/scatters.png')
     plt.show()
 
 if __name__ == '__main__':
