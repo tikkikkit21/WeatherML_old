@@ -18,16 +18,17 @@ if len(sys.argv) == 1:
 else:
     arg = sys.argv[1]
     if arg == '-h':
-        print('Usage: train.py [version number]')
+        print('Usage: train.py [version number]\nEx: train.py 2')
         exit()
     elif not arg.isdigit():
         print('Version needs to be a number!')
+        exit()
     VERSION = f'exp{arg}'
 
 try:
     config = config[VERSION]
 except KeyError:
-    print(f'Experiment {VERSION} does not exist')
+    print(f'Experiment \'{VERSION}\' does not exist')
     exit()
 
 RESULTS_DIR = 'results'
