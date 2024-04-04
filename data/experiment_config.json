@@ -1,12 +1,14 @@
 {
-    "v1": {
+    "exp1": {
         "date": "01/27/2024",
+        "dataset": "weather_data_v1.csv",
         "labels": ["date","time","temp","feels_like","humidity","uv","wind","outer_clothing", "rain"],
         "ignore": ["rain", "date"],
         "output": "outer_clothing"
     },
-    "v2": {
+    "exp2": {
         "date": "02/24/2024",
+        "dataset": "weather_data_v2.csv",
         "labels": ["date","time","temp","feels_like","humidity","uv","wind","gusts","outer_clothing", "rain"],
         "ignore": ["rain", "date", "gusts"],
         "output": "outer_clothing"
