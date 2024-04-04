@@ -49,3 +49,19 @@ v1 of the dataset), I have a training accuracy of 73.47% and test accuracy of
 81.82%. It's not terrible, but I definitely want to improve it (my goal is ~90%
 for both is possible). The model itself will need to be tweaked, but the biggest
 thing I'll need to do is collect a lot more data.
+
+## Training Experiments
+I don't want to just train my data, get a good model, and call it a day. This
+project has piqued my interest in different ways I can experiment with my data.
+Some of the questions I hope to answer soon include:
+
+- How important is each data feature? Temperature obviously is a big factor, but
+  what about smaller things like humidity and wind speed?
+- Does the time of day matter, or is pure weather data sufficient for predicting
+  what to wear
+- How do the average values for each data feature differ between labels? What
+  was the average temp, humidity, wind, etc. for each label (`none`,
+  `jacket-long`, `jacket-short`, `coat`)?
+
+Check out the [experiment log](https://github.com/tikkikkit21/WeatherML/blob/main/data/experiment_log.md)
+for more info on what experiments I'm trying out with my data!
