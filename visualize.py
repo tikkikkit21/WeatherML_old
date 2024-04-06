@@ -108,6 +108,33 @@ def plot_scatters():
     plt.savefig(f'visualizations/scatters_{VERSION}.png')
     plt.show()
 
+def mds():
+    data_norm = data.drop(columns=config['ignore']).select_dtypes(include=['number'])
+    data_norm = (data_norm - data_norm.mean()) / data_norm.std()
+
+    distMatrix = sklearn.metrics.pairwise.manhattan_distances(data_norm)
+    distMatrix = pd.DataFrame(
+        distMatrix,
+        columns=data_norm.index,
+        index=data_norm.index
+    )
+ 
+    mds = sklearn.manifold.MDS(
+        n_components=2,
+        dissimilarity='precomputed',
+        n_init=100,
+        max_iter=1000
+    )
+
+    data2D = mds.fit_transform(distMatrix)
+    data2D = pd.DataFrame(
+        data2D,
+        columns=['x','y'],
+        index=data_norm.index
+    )
+
+    print("Stress:", mds.stress_)
+
 if __name__ == '__main__':
     init_data()
     plot_histograms()
