@@ -68,8 +68,8 @@ if __name__ == '__main__':
         os.makedirs(RESULTS_DIR)
 
     timestamp = f'{datetime.now().date()}_{datetime.now().time().strftime("%M%H%S")}'
-    joblib.dump(model, f'results/{timestamp}.model')
-    joblib.dump(scaler, f'results/{timestamp}.scaler')
+    joblib.dump(model, f'{RESULTS_DIR}/{timestamp}.model')
+    joblib.dump(scaler, f'{RESULTS_DIR}/{timestamp}.scaler')
 
     # prompt to save in best
     save = input('Would you like to save this run as your best? (y/N) ').lower()
