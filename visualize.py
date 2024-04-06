@@ -2,6 +2,8 @@ import sys
 import json
 import pandas as pd
 import numpy as np
+import sklearn.manifold
+import sklearn.metrics.pairwise
 import matplotlib.pyplot as plt
 import matplotlib.axes
 from matplotlib.colors import ListedColormap
@@ -108,7 +110,7 @@ def plot_scatters():
     plt.savefig(f'visualizations/scatters_{VERSION}.png')
     plt.show()
 
-def mds():
+def plot_mds():
     data_norm = data.drop(columns=config['ignore']).select_dtypes(include=['number'])
     data_norm = (data_norm - data_norm.mean()) / data_norm.std()
 
@@ -135,7 +137,11 @@ def mds():
 
     print("Stress:", mds.stress_)
 
+    data2D.plot.scatter(x='x', y='y')
+    plt.show()
+
 if __name__ == '__main__':
     init_data()
     plot_histograms()
     plot_scatters()
+    plot_mds()
