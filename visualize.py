@@ -75,7 +75,7 @@ def scatter(axis: matplotlib.axes.Axes, feature='temp'):
         y=data[feature],
         c=data[config['output']].astype('category').cat.codes,
         cmap=clothes_cm,
-        s=5
+        s=10
     )
 
     axis.set_title(feature)
