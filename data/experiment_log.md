@@ -6,6 +6,7 @@
 | ---------- | ---------- | --------- |
 | Exp 1      | 73.47%     | 81.82%    |
 | Exp 2      | 79.14%     | 73.68%    |
+| Exp 3      | 74.81%     | 80.00%    |
 
 ### Experiment 1
 - **Date:** 01/27/2024
@@ -29,6 +30,19 @@ due to the uneven distribution of label records. It's still winter so there's a
 lot of `coat` records in there, which may be skewing results a little. There's
 also a new data feature `Gust` since iOS Weather added it. However, it has
 missing data so I ignored it for now.
+
+### Experiment 3
+- **Date:** 04/06/2024
+- **Train Acc:** 74.81%
+- **Test Acc:** 80.00%
+
+The new dataset (version 3) added another ~100 entries, so there was some more
+data to work with in training. It's also getting warmer so I was finally getting
+some data that wasn't `coat` all the time. Although the training accuracy dipped
+a little, the test accuracy went back up. Overall, the results are very similar
+to the first experiment, which is interesting. The distribution of data records
+still heavily favors `coat`, although not as bad as v2. Hopefully as the weather
+gets warmer, the data record distribution can even out some more.
 
 ## Dataset Log
 **Google Sheets:** https://docs.google.com/spreadsheets/d/1wjoOM3OyRlOUdET7_jU2uoCyOraQOWY8XGOw8LVWK3A
