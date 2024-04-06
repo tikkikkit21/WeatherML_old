@@ -12,5 +12,12 @@
         "labels": ["date","time","temp","feels_like","humidity","uv","wind","gusts","outer_clothing", "rain"],
         "ignore": ["rain", "date", "gusts"],
         "output": "outer_clothing"
+    },
+    "exp3": {
+        "date": "04/06/2024",
+        "dataset": "weather_data_v3.csv",
+        "labels": ["date","time","temp","feels_like","humidity","uv","wind","gusts","outer_clothing"],
+        "ignore": ["date", "gusts"],
+        "output": "outer_clothing"
     }
 }
