@@ -97,7 +97,7 @@ def plot_scatters():
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(
         nrows=2,
         ncols=2,
-        figsize=(8,8)
+        figsize=(12,7)
     )
 
     scatter(ax1, 'temp')
@@ -108,7 +108,9 @@ def plot_scatters():
     legend_labels = ['coat', 'jacket-long', 'jacket-short', 'none']
     legend_handles = [plt.Line2D([0], [0], marker='o', color='w', markerfacecolor=list(COLORS.values())[i], markersize=10) for i in range(4)]
     fig.legend(legend_handles, legend_labels, title='Categories')
-
+    
+    fig.tight_layout()
+    fig.subplots_adjust(right=0.87)
     # plt.savefig(f'visualizations/scatters_{VERSION}.png')
     plt.show()
 
