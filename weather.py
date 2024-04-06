@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
@@ -5,8 +6,15 @@ from sklearn.preprocessing import StandardScaler
 import joblib
 from util import percent
 
-model: LogisticRegression = joblib.load('results.best/best.model')
-scaler: StandardScaler = joblib.load('results.best/best.scaler')
+MODEL_PATH = 'results.best/best.model'
+SCALER_PATH = 'results.best/best.scaler'
+
+if not (os.path.isfile(MODEL_PATH) or os.path.isfile(SCALER_PATH)):
+    print('Missing best model and/or scaler, please run train.py first!')
+    exit()
+
+model: LogisticRegression = joblib.load(MODEL_PATH)
+scaler: StandardScaler = joblib.load(SCALER_PATH)
 
 def predict(*args):
     labels = ['Date', 'Temp', 'FeelsLike', 'Humidity', 'UV', 'Wind', 'Label', 'Rain?']
