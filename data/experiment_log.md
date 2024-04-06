@@ -41,3 +41,8 @@ missing data so I ignored it for now.
 - Added 02/24/2024
 - 182 entries
 - Added `Gusts` data
+
+### Version 3
+- Added 04/06/2024
+- 292 Entries
+- Removed `Rain?` data
