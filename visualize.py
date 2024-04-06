@@ -111,7 +111,7 @@ def plot_scatters():
     
     fig.tight_layout()
     fig.subplots_adjust(right=0.87)
-    # plt.savefig(f'visualizations/scatters_{VERSION}.png')
+    plt.savefig(f'visualizations/scatters_{VERSION}.png')
     plt.show()
 
 def plot_mds():
@@ -146,6 +146,6 @@ def plot_mds():
 
 if __name__ == '__main__':
     init_data()
-    # plot_histograms()
+    plot_histograms()
     plot_scatters()
-    # plot_mds()
+    plot_mds()
