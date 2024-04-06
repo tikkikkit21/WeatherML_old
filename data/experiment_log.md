@@ -41,8 +41,11 @@ data to work with in training. It's also getting warmer so I was finally getting
 some data that wasn't `coat` all the time. Although the training accuracy dipped
 a little, the test accuracy went back up. Overall, the results are very similar
 to the first experiment, which is interesting. The distribution of data records
-still heavily favors `coat`, although not as bad as v2. Hopefully as the weather
-gets warmer, the data record distribution can even out some more.
+still heavily favors `coat`. Hopefully as the weather gets warmer, the data
+record distribution can even out some more. I'm noticing that the data points
+are starting to crowd the scatter plots, so I may need to make some visual
+adjustments there. Not sure if I want to make standalone figures for each
+scatter or keep it as a scatter matrix.
 
 ## Dataset Log
 **Google Sheets:** https://docs.google.com/spreadsheets/d/1wjoOM3OyRlOUdET7_jU2uoCyOraQOWY8XGOw8LVWK3A
