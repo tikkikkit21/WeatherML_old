@@ -74,7 +74,8 @@ def scatter(axis: matplotlib.axes.Axes, feature='temp'):
         x=data.index,
         y=data[feature],
         c=data[config['output']].astype('category').cat.codes,
-        cmap=clothes_cm
+        cmap=clothes_cm,
+        s=5
     )
 
     legend_labels = ['coat', 'jacket-long', 'jacket-short', 'none']
@@ -142,6 +143,6 @@ def plot_mds():
 
 if __name__ == '__main__':
     init_data()
-    plot_histograms()
+    # plot_histograms()
     plot_scatters()
-    plot_mds()
+    # plot_mds()
