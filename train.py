@@ -32,6 +32,7 @@ except KeyError:
     exit()
 
 RESULTS_DIR = 'results'
+BEST_DIR = 'results.best'
 DATA_CSV = f'data/{config["dataset"]}'
 
 if __name__ == '__main__':
@@ -58,6 +59,10 @@ if __name__ == '__main__':
     # train
     model.fit(x_train, y_train)
 
+    # score model
+    print('Train accuracy:', percent(model.score(x_train, y_train)))
+    print('Test accuracy:', percent(model.score(x_test, y_test)))
+
     # store 
     if not os.path.exists(RESULTS_DIR):
         os.makedirs(RESULTS_DIR)
@@ -66,6 +71,14 @@ if __name__ == '__main__':
     joblib.dump(model, f'results/{timestamp}.model')
     joblib.dump(scaler, f'results/{timestamp}.scaler')
 
-    # score model
-    print('Train accuracy:', percent(model.score(x_train, y_train)))
-    print('Test accuracy:', percent(model.score(x_test, y_test)))
+    # prompt to save in best
+    save = input('Would you like to save this run as your best? (y/N) ').lower()
+    save = save in ['y', 'yes']
+    if save:
+        if not os.path.exists(BEST_DIR):
+            os.makedirs(BEST_DIR)
+        joblib.dump(model, f'{BEST_DIR}/best.model')
+        joblib.dump(scaler, f'{BEST_DIR}/best.scaler')
+        print(f'Results saved in \'{BEST_DIR}\'')
+    else:
+        print('Note: Results are still saved in your \'results\' folder')
