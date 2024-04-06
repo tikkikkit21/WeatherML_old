@@ -78,9 +78,6 @@ def scatter(axis: matplotlib.axes.Axes, feature='temp'):
         s=5
     )
 
-    legend_labels = ['coat', 'jacket-long', 'jacket-short', 'none']
-    legend_handles = [plt.Line2D([0], [0], marker='o', color='w', markerfacecolor=list(COLORS.values())[i], markersize=10) for i in range(4)]
-    axis.legend(legend_handles, legend_labels, title='Categories')
     axis.set_title(feature)
 
 def plot_histograms():
@@ -108,7 +105,11 @@ def plot_scatters():
     scatter(ax3, 'uv')
     scatter(ax4, 'wind')
 
-    plt.savefig(f'visualizations/scatters_{VERSION}.png')
+    legend_labels = ['coat', 'jacket-long', 'jacket-short', 'none']
+    legend_handles = [plt.Line2D([0], [0], marker='o', color='w', markerfacecolor=list(COLORS.values())[i], markersize=10) for i in range(4)]
+    fig.legend(legend_handles, legend_labels, title='Categories')
+
+    # plt.savefig(f'visualizations/scatters_{VERSION}.png')
     plt.show()
 
 def plot_mds():
