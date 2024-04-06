@@ -5,8 +5,8 @@ from sklearn.preprocessing import StandardScaler
 import joblib
 from util import percent
 
-model: LogisticRegression = joblib.load('results/2024-02-24_561133.model')
-scaler: StandardScaler = joblib.load('results/2024-02-24_561133.scaler')
+model: LogisticRegression = joblib.load('results.best/best.model')
+scaler: StandardScaler = joblib.load('results.best/best.scaler')
 
 def predict(*args):
     labels = ['Date', 'Temp', 'FeelsLike', 'Humidity', 'UV', 'Wind', 'Label', 'Rain?']
