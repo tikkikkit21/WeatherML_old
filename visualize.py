@@ -144,8 +144,14 @@ def plot_mds():
     data2D.plot.scatter(x='x', y='y')
     plt.show()
 
+def boxplot(data: pd.DataFrame, col: str):
+    data.boxplot(column=[col])
+    plt.show()
+
+
 if __name__ == '__main__':
     init_data()
-    plot_histograms()
-    plot_scatters()
-    plot_mds()
+    # plot_histograms()
+    # plot_scatters()
+    # plot_mds()
+    boxplot(data, 'uv')
