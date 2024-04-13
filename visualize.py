@@ -144,14 +144,28 @@ def plot_mds():
     data2D.plot.scatter(x='x', y='y')
     plt.show()
 
-def boxplot(data: pd.DataFrame, col: str):
-    data.boxplot(column=[col])
+def plot_boxplots():
+    fig, (ax1, ax2, ax3, ax4) = plt.subplots(
+        nrows=1,
+        ncols=4,
+        figsize=(12,4)
+    )
+    boxplot(ax1, 'temp')
+    boxplot(ax2, 'uv')
+    boxplot(ax3, 'humidity')
+    boxplot(ax4, 'wind')
+
+    fig.suptitle("Data Feature Distribution")
+    fig.tight_layout()
+    plt.savefig(f'visualizations/boxplots_{VERSION}.png')
     plt.show()
 
+def boxplot(axis, col: str):
+    data.boxplot(column=[col], ax=axis)
 
 if __name__ == '__main__':
     init_data()
-    # plot_histograms()
-    # plot_scatters()
-    # plot_mds()
-    boxplot(data, 'uv')
+    plot_histograms()
+    plot_scatters()
+    plot_mds()
+    plot_boxplots()
