@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 import joblib
-from util import percent
+from util import percent, time_to_int
 
 MODEL_PATH = 'results.best/best.model'
 SCALER_PATH = 'results.best/best.scaler'
@@ -17,10 +17,10 @@ model: LogisticRegression = joblib.load(MODEL_PATH)
 scaler: StandardScaler = joblib.load(SCALER_PATH)
 
 def predict(*args):
-    labels = ['Date', 'Temp', 'FeelsLike', 'Humidity', 'UV', 'Wind', 'Label', 'Rain?']
+    labels = ["time","temp","feels_like","humidity","uv","wind"]
 
-    now = datetime.now().time().strftime('%H%M')
-    args = [int(now)] + list(args)
+    now = datetime.now().strftime("%H:%M")
+    args = [time_to_int(now)] + list(args)
 
     df = pd.DataFrame([args], columns=labels[:6])
     sample = scaler.transform(df)
