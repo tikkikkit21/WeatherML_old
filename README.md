@@ -3,6 +3,10 @@
 **Trello:** https://trello.com/b/kGRYd7Zx/weatherml<br>
 **Dataset:** https://docs.google.com/spreadsheets/d/1wjoOM3OyRlOUdET7_jU2uoCyOraQOWY8XGOw8LVWK3A
 
+## -> UPDATE <-
+I've gone with a completely different approach to this project, check it out here:
+https://github.com/tikkikkit21/WeatherML
+
 ## Background
 One unique thing about me is that I love my black Adidas jacket and I wear it as
 much as I can. My default style is to leave it unzipped with rolled-up sleeves.
